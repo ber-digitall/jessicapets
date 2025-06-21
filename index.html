@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Metadados Básicos + Segurança -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jéssica Pets - Loja especializada em produtos para animais de estimação. Oferecemos rações, acessórios e tudo que seu pet precisa com qualidade e amor.">
+    <meta name="keywords" content="pet shop, ração para cães, ração para gatos, produtos para animais, loja pet, acessórios para pets">
+    
+    <!-- Medidas de Segurança -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://maps.googleapis.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://images.unsplash.com https://randomuser.me https://upload.wikimedia.org;">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Strict-Transport-Security" content="max-age=63072000; includeSubDomains; preload">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    
+    
+    <title>Jéssica Pets - Sua Nova Opção Pet</title>
+    
+    <style>
+        :root {
+            --lilac: #c8a2c8;
+            --cream: #fffdd0;
+            --beige: #f5f5dc;
+            --black: #1a1a1a;
+            --pink: #ffc0cb;
+            --gradient: linear-gradient(135deg, var(--lilac) 0%, var(--pink) 100%);
+            --white: #ffffff;
+            --gold: #FFD700;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--beige);
+            color: var(--black);
+            line-height: 1.6;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+             height: 80px; /* Altura fixa para o container da logo */
+        }
+
+        .logo-img {
+            height: 100%;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+        }
+
+
+        .logo {    
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--black);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--lilac);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav ul li a:hover,
+        nav ul li a:focus {
+            color: var(--white);
+            background: var(--gradient);
+            transform: translateY(-2px);
+            outline: none;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background: url('https://images.unsplash.com/photo-1594149929911-78975a43d4f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 5%;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            color: var(--white);
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--gradient);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn:hover,
+        .btn:focus {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            outline: none;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--black);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--gradient);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+        
+        .story-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .story-card {
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .story-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .story-card h3 {
+            color: var(--lilac);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 5rem 2rem;
+            background-color: var(--beige);
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .product-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .product-img {
+            height: 150px;
+            background: var(--cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--lilac);
+            font-size: 3rem;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-info h3 {
+            color: var(--black);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            position: relative;
+            padding: 6rem 2rem 8rem;
+            background-color: var(--white);
+            overflow: hidden;
+        }
+        
+        .testimonials-wave {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            color: var(--lilac);
+            transform: rotate(180deg);
+        }
+        
+        .testimonials .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--black);
+            margin-bottom: 3rem;
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+        
+        .paw-icon {
+            color: var(--pink);
+            margin-left: 10px;
+        }
+        
+        .testimonials-carousel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(200, 162, 200, 0.15);
+            border: 1px solid rgba(200, 162, 200, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(200, 162, 200, 0.25);
+        }
+        
+        .testimonial-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .client-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            border: 3px solid var(--lilac);
+            margin-right: 1rem;
+        }
+        
+        .client-info h3 {
+            color: var(--black);
+            margin-bottom: 0.3rem;
+        }
+        
+        .testimonial-rating {
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+        
+        .star {
+            font-size: 1.1rem;
+        }
+        
+        .star.half {
+            position: relative;
+        }
+        
+        .star.half::after {
+            content: '★';
+            position: absolute;
+            left: 0;
+            width: 50%;
+            overflow: hidden;
+            color: var(--gold);
+        }
+        
+        .testimonial-card blockquote {
+            font-style: italic;
+            color: var(--black);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .testimonial-card blockquote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 3rem;
+            color: var(--lilac);
+            opacity: 0.2;
+            font-family: serif;
+        }
+        
+        .pet-tag {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(200, 162, 200, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--black);
+        }
+        
+        .pet-icon {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .testimonials-cta {
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .testimonials-cta p {
+            font-size: 1.3rem;
+            color: var(--black);
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn-testimonial {
+            background: var(--gradient);
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            background: var(--white);
+        }
+        
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--lilac);
+        }
+        
+        .contact-form {
+            background: var(--cream);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+        }
+        
+        /* Map Section */
+        .map {
+            height: 400px;
+            background: #eee;
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #25D366;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 99;
+            animation: pulse 2s infinite;
+            padding: 12px;
+        }
+        
+        .whatsapp-btn img {
+            width: 100%;
+            height: auto;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        /* Brands Section */
+        .brands-aside {
+            grid-column: span 3;
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border: 2px solid var(--lilac);
+            margin: 1rem 0;
+        }
+        
+        .brands-aside h3 {
+            color: var(--black);
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .brands-aside h3 span {
+            color: var(--pink);
+            font-size: 1.5rem;
+        }
+        
+        .brand-logos-container {
+            background: var(--cream);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+        
+        .brand-logos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .brand-logo {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .brand-logo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        
+        .brand-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .brand-name {
+            font-weight: bold;
+            color: var(--black);
+            margin-bottom: 0.3rem;
+            font-size: 1.1rem;
+        }
+        
+        .brand-desc {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .brands-footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-style: italic;
+            color: var(--lilac);
+            padding-top: 1rem;
+            border-top: 1px dashed var(--lilac);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .social-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .facebook {
+            background-color: #1877F2;
+            color: white;
+        }
+        
+        .instagram {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+            color: white;
+        }
+        
+        .whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .testimonial-card:hover {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Accessibility Improvements */
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 0;
+            background: var(--black);
+            color: var(--white);
+            padding: 1rem;
+            z-index: 999;
+        }
+        
+        .skip-link:focus {
+            left: 0;
+        }
+        
+        input:focus,
+        textarea:focus,
+        button:focus {
+            outline: 2px solid var(--lilac);
+            outline-offset: 2px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .brands-aside {
+                grid-column: span 2;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .brands-aside {
+                grid-column: span 1;
+            }
+            
+            .brands-aside h3 {
+                font-size: 1.5rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .brand-logos-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .testimonials-carousel {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials {
+                padding: 4rem 1rem 6rem;
+            }
+            
+            .social-links {
+                gap: 1rem;
+            }
+            
+            .social-btn {
+                width: 36px;
+                height: 36px;
+            }
+            
+            .social-btn svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .brand-logos-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                height: 60vh;
+            }
+            
+            .btn {
+                padding: 0.6rem 1.4rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Ir para o conteúdo principal</a>
+
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <a href="#" class="logo">
+                <img src="imagens/jessicapetstransparente.png" alt="Jéssica Pets - Logo" class="logo-img" loading="lazy">
+            </a>
+        </div>
+        <nav aria-label="Navegação principal">
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Sobre Nós</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#contato">Contate-nos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio" aria-labelledby="hero-heading">
+        <div class="hero-content">
+            <h1 id="hero-heading">Sua Nova Opção Pet</h1>
+            <p>Na Jéssica Pets, seu animal de estimação encontra tudo o que precisa com amor e qualidade. Venha nos visitar e descubra por que somos a escolha certa para o seu pet!</p>
+            <a href="#produtos" class="btn">Ver Produtos</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- About Section -->
+        <section class="about" id="sobre" aria-labelledby="about-heading">
+            <h2 id="about-heading" class="section-title">Nossa História</h2>
+            <div class="story-container">
+                <article class="story-card">
+                    <h3>Nossa Paixão</h3>
+                    <p>Tudo começou com o amor incondicional de Jéssica pelos animais. Apaixonada por pets desde criança, ela transformou seu sonho em realidade ao abrir a Jéssica Pets, um espaço onde qualidade e carinho andam juntos.</p>
+                </article>
+                <article class="story-card">
+                    <h3>Nossa Missão</h3>
+                    <p>Oferecer produtos de alta qualidade a preços acessíveis, com atendimento personalizado e conhecimento técnico. Queremos ser a segunda casa do seu pet, onde ele encontra tudo para uma vida saudável e feliz.</p>
+                </article>
+                <article class="story-card">
+                    <h3>Nossa Diferenciação</h3>
+                    <p>Além de uma ampla variedade de produtos, oferecemos orientação especializada. Nossa equipe está sempre pronta para ajudar você a escolher o melhor para seu animal, com dicas de alimentação, cuidados e bem-estar.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials" id="depoimentos" aria-labelledby="testimonials-heading">
+            <div class="testimonials-wave" aria-hidden="true">
+                <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="currentColor"></path>
+                    <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="currentColor"></path>
+                    <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="currentColor"></path>
+                </svg>
+            </div>
+            
+            <div class="container">
+                <h2 id="testimonials-heading" class="section-title">Nossos Clientes Amam a Jéssica Pets <span class="paw-icon">🐾</span></h2>
+                <p class="section-subtitle">Veja o que dizem sobre nossa dedicação e cuidado com seus pets</p>
+                
+                <div class="testimonials-carousel">
+                    <!-- Depoimento 1 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="client-avatar" style="background-image: url('https://randomuser.me/api/portraits/women/44.jpg')"></div>
+                            <div class="client-info">
+                                <h3>Ana Paula</h3>
+                                <div class="testimonial-rating">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <blockquote>
+                            <p>"Minha gata Luna é super exigente com comida, mas ela ADORA os petiscos da Jéssica Pets! A equipe me ajudou a escolher produtos saudáveis e agora sempre volto. O atendimento é tão atencioso que até a Luna se sente em casa!"</p>
+                        </blockquote>
+                        <div class="pet-tag">
+                            <span class="pet-icon">🐱</span> Luna - Gata Siamesa
+                        </div>
+                    </article>
+                    
+                    <!-- Depoimento 2 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="client-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/32.jpg')"></div>
+                            <div class="client-info">
+                                <h3>Carlos Eduardo</h3>
+                                <div class="testimonial-rating">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <blockquote>
+                            <p>"Meu labrador Thor tinha problemas de pele e a Jéssica Pets salvou nós dois! Recomendaram a ração perfeita e agora ele está saudável e cheio de energia. O conhecimento técnico da equipe faz toda diferença!"</p>
+                        </blockquote>
+                        <div class="pet-tag">
+                            <span class="pet-icon">🐶</span> Thor - Labrador
+                        </div>
+                    </article>
+
+                    <!-- Depoimento 3 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="client-avatar" style="background-image: url('https://randomuser.me/api/portraits/women/68.jpg')"></div>
+                            <div class="client-info">
+                                <h3>Fernanda</h3>
+                                <div class="testimonial-rating">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star half">★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <blockquote>
+                            <p>"Comprei um aquário completo e fui maravilhosamente orientada. Meus peixes estão lindos! Só não dei 5 estrelas porque queria mais variedade de decorações, mas a qualidade dos produtos é excelente!"</p>
+                        </blockquote>
+                        <div class="pet-tag">
+                            <span class="pet-icon">🐠</span> Escola de Peixes
+                        </div>
+                    </article>
+
+                    <!-- Depoimento 4 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="client-avatar" style="background-image: url('https://randomuser.me/api/portraits/women/25.jpg')"></div>
+                            <div class="client-info">
+                                <h3>Mariana</h3>
+                                <div class="testimonial-rating">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <blockquote>
+                            <p>"A coleira que comprei para meu cachorro agitado está intacta depois de 6 meses! Qualidade impressionante. E o melhor: sempre me senti acolhida, mesmo quando só entro para perguntar algo. Recomendo demais!"</p>
+                        </blockquote>
+                        <div class="pet-tag">
+                            <span class="pet-icon">🐕</span> Bruce - SRD
+                        </div>
+                    </article>
+
+                    <!-- Depoimento 5 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="client-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/75.jpg')"></div>
+                            <div class="client-info">
+                                <h3>Ricardo</h3>
+                                <div class="testimonial-rating">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <blockquote>
+                            <p>"Levo meus dois gatos na Jéssica Pets desde filhotes. A variedade de arranhadores e brinquedos é incrível! Eles conhecem cada um pelo nome e sempre dão dicas valiosas. Não troco por nenhuma outra pet shop!"</p>
+                        </blockquote>
+                        <div class="pet-tag">
+                            <span class="pet-icon">🐈</span> Mia e Oliver - Gatos
+                        </div>
+                    </article>
+                    
+                    <!-- Depoimento 6 -->
+                    <article class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="client-avatar" style="background-image: url('https://randomuser.me/api/portraits/women/33.jpg')"></div>
+                            <div class="client-info">
+                                <h3>Juliana Santos</h3>
+                                <div class="testimonial-rating">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                            </div>
+                        </div>
+                        <blockquote>
+                            <p>"A Jéssica Pets revolucionou os cuidados com meu coelho! A orientação sobre alimentação foi perfeita e encontrei tudo o que precisava em um só lugar. Meu coelho nunca esteve tão saudável e ativo. Recomendo de olhos fechados!"</p>
+                        </blockquote>
+                        <div class="pet-tag">
+                            <span class="pet-icon">🐰</span> Floquinho - Coelho Anão
+                        </div>
+                    </article>
+                </div>
+                
+                <div class="testimonials-cta">
+                    <p>Seu pet também merece essa experiência!</p>
+                    <a href="#contato" class="btn btn-testimonial">Deixe seu depoimento</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="products" id="produtos" aria-labelledby="products-heading">
+            <h2 id="products-heading" class="section-title">Nossos Produtos</h2>
+            <div class="product-grid">
+                <article class="product-card">
+                    <div class="product-img" aria-hidden="true">🐶</div>
+                    <div class="product-info">
+                        <h3>Ração para Cães</h3>
+                        <p>Variedade de rações premium e standard para todas as idades e portes.</p>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-img" aria-hidden="true">🐱</div>
+                    <div class="product-info">
+                        <h3>Ração para Gatos</h3>
+                        <p>Alimentos nutritivos para gatos filhotes, adultos e sênior.</p>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-img" aria-hidden="true">🐦</div>
+                    <div class="product-info">
+                        <h3>Ração para Pássaros</h3>
+                        <p>Misturas balanceadas para diversas espécies de aves.</p>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-img" aria-hidden="true">🐠</div>
+                    <div class="product-info">
+                        <h3>Ração para Peixes</h3>
+                        <p>Alimentos para peixes tropicais, de água doce e salgada.</p>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-img" aria-hidden="true">🐢</div>
+                    <div class="product-info">
+                        <h3>Ração para Tartarugas</h3>
+                        <p>Alimentos específicos para tartarugas aquáticas e terrestres.</p>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-img" aria-hidden="true">🐰</div>
+                    <div class="product-info">
+                        <h3>Ração para Coelhos</h3>
+                        <p>Alimentos balanceados para a saúde digestiva dos coelhos.</p>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-img" aria-hidden="true">🍖</div>
+                    <div class="product-info">
+                        <h3>Petiscos</h3>
+                        <p>Deliciosos petiscos naturais e funcionais para recompensar seu pet.</p>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-img" aria-hidden="true">🐠</div>
+                    <div class="product-info">
+                        <h3>Aquários</h3>
+                        <p>Aquários completos e acessórios para seu ecossistema aquático.</p>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-img" aria-hidden="true">🧻</div>
+                    <div class="product-info">
+                        <h3>Tapetes Higiênicos</h3>
+                        <p>Absorventes e tapetes para facilitar a higiene do seu pet.</p>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-img" aria-hidden="true">🚽</div>
+                    <div class="product-info">
+                        <h3>Areia para Gatos</h3>
+                        <p>Variedade de areias higiênicas, incluindo as biodegradáveis.</p>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-img" aria-hidden="true">🦮</div>
+                    <div class="product-info">
+                        <h3>Coleiras e Acessórios</h3>
+                        <p>Coleiras, guias e peitorais para passeios seguros e confortáveis.</p>
+                    </div>
+                </article>
+                <article class="product-card">
+                    <div class="product-img" aria-hidden="true">🎾</div>
+                    <div class="product-info">
+                        <h3>Brinquedos</h3>
+                        <p>Brinquedos interativos e educativos para entreter seu pet.</p>
+                    </div>
+                </article>
+            </div>
+    
+            <aside class="brands-aside" aria-labelledby="brands-heading">
+                <h3 id="brands-heading"><span aria-hidden="true">🌟</span> Produtos das Melhores Marcas do Mercado <span aria-hidden="true">🌟</span></h3>
+                <div class="brand-logos-container">
+                    <div class="brand-logos-grid">
+                        <article class="brand-logo">
+                            <div class="brand-icon" aria-hidden="true">🐩</div>
+                            <div class="brand-name">Pedigree</div>
+                            <div class="brand-desc">Alimento completo para cães</div>
+                        </article>
+                        <article class="brand-logo">
+                            <div class="brand-icon" aria-hidden="true">🐈</div>
+                            <div class="brand-name">Whiskas</div>
+                            <div class="brand-desc">Nutrição balanceada para gatos</div>
+                        </article>
+                        <article class="brand-logo">
+                            <div class="brand-icon" aria-hidden="true">🐱</div>
+                            <div class="brand-name">Purina</div>
+                            <div class="brand-desc">Pro Plan e outras linhas premium</div>
+                        </article>
+                        <article class="brand-logo">
+                            <div class="brand-icon" aria-hidden="true">🦴</div>
+                            <div class="brand-name">PremieR</div>
+                            <div class="brand-desc">Rações super premium</div>
+                        </article>
+                        <article class="brand-logo">
+                            <div class="brand-icon" aria-hidden="true">🐟</div>
+                            <div class="brand-name">Alcon</div>
+                            <div class="brand-desc">Especialista em aquarismo</div>
+                        </article>
+                    </div>
+                </div>
+                <div class="brands-footer">
+                    <p>Trabalhamos apenas com marcas registradas e de comprovada qualidade!</p>
+                </div>
+            </aside>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contato" aria-labelledby="contact-heading">
+            <h2 id="contact-heading" class="section-title">Entre em Contato</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon" aria-hidden="true">📍</div>
+                        <div>
+                            <h3>Endereço</h3>
+                            <address>
+                                Rua Paranacity, 1136 - Parque Paulistano<br>
+                                São Paulo - SP, 08080-360
+                            </address>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon" aria-hidden="true">⏰</div>
+                        <div>
+                            <h3>Horário de Funcionamento</h3>
+                            <p>
+                                Segunda a Sexta: 9h às 20h<br>
+                                Sábado: 9h às 17h<br>
+                                Domingo: 9h às 13h
+                            </p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon" aria-hidden="true">📞</div>
+                        <div>
+                            <h3>Telefone</h3>
+                            <p><a href="tel:+5511986386054" rel="noopener noreferrer">(11) 98638-6054</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon" aria-hidden="true">✉️</div>
+                        <div>
+                            <h3>Email</h3>
+                            <p><a href="mailto:contato@jessicapets.com" rel="noopener noreferrer">contato@jessicapets.com</a></p>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/5511986386054" class="btn" rel="noopener noreferrer">Pedir pelo WhatsApp</a>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm" netlify>
+                        <!-- Campo Honeypot (anti-spam invisível) -->
+                        <input type="text" name="_gotcha" style="display:none">
+                        
+                        <div class="form-group">
+                            <label for="name">Nome*</label>
+                            <input type="text" id="name" name="name" required 
+                                   minlength="3" maxlength="50"
+                                   pattern="[A-Za-zÀ-ú\s]+"
+                                   title="Por favor, insira apenas letras e espaços">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email*</label>
+                            <input type="email" id="email" name="email" required
+                                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                                   title="Por favor, insira um email válido">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Telefone*</label>
+                            <input type="tel" id="phone" name="phone"
+                                   pattern="(\(?\d{2}\)?\s)?(\d{4,5}\-?\d{4})"
+                                   title="Formato: (11) 91234-5678">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Mensagem*</label>
+                            <textarea id="message" name="message" required
+                                      minlength="10" maxlength="500"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Map Section -->
+    <div class="map">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3655.324041562603!2d-46.56794992417226!3d-23.63422186460007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce43297df7a7bb%3A0x1b7d5e8a1a0d9c6e!2sRua%20Paranacity%2C%201136%20-%20Parque%20Paulistano%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2008080-360!5e0!3m2!1spt-BR!2sbr!4v1620000000000!5m2!1spt-BR!2sbr" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy"
+            title="Localização da Jéssica Pets no mapa"
+            aria-label="Mapa mostrando a localização da loja Jéssica Pets"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/5511986386054" class="whatsapp-btn" aria-label="Contate-nos pelo WhatsApp" rel="noopener noreferrer">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="32" height="32" loading="lazy" crossorigin="anonymous">
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <p>Siga nos nas redes sociais</p><br>
+        <div class="social-links">
+            <a href="https://facebook.com/suapagina" class="social-btn facebook" aria-label="Facebook da Jéssica Pets" target="_blank" rel="noopener noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="currentColor" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+                </svg>
+            </a>
+            
+            <a href="https://instagram.com/suapagina" class="social-btn instagram" aria-label="Instagram da Jéssica Pets" target="_blank" rel="noopener noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                </svg>
+            </a>
+        </div>
+        <p>&copy; <span id="current-year">2025</span> Jéssica Pets. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- JavaScript com Segurança -->
+    <script>
+        // Forçar HTTPS (exceto em localhost)
+        if (location.protocol !== 'https:' && location.hostname !== 'localhost' && !location.hostname.endsWith('.netlify.app')) {
+            location.replace(`https:${location.href.substring(location.protocol.length)}`);
+        }
+
+        // Validação Avançada do Formulário
+        document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+            // Validar nome (apenas letras e espaços)
+            const name = document.getElementById('name').value.trim();
+            if (!/^[A-Za-zÀ-ú\s]{3,50}$/.test(name)) {
+                alert("Por favor, insira um nome válido (3-50 caracteres, apenas letras)");
+                e.preventDefault();
+                return;
+            }
+
+            // Validar email
+            const email = document.getElementById('email').value.trim();
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                alert("Por favor, insira um email válido!");
+                e.preventDefault();
+                return;
+            }
+
+            // Validar telefone se preenchido
+            const phone = document.getElementById('phone').value.trim();
+            if (phone && !/(\(?\d{2}\)?\s)?(\d{4,5}\-?\d{4})/.test(phone)) {
+                alert("Por favor, insira um telefone válido (formato: (11) 91234-5678)");
+                e.preventDefault();
+                return;
+            }
+
+            // Validar mensagem
+            const message = document.getElementById('message').value.trim();
+            if (message.length < 10 || message.length > 500) {
+                alert("A mensagem deve ter entre 10 e 500 caracteres");
+                e.preventDefault();
+                return;
+            }
+
+            // Simulação de envio seguro (substitua por código real se tiver backend)
+            alert("Mensagem enviada com sucesso! Entraremos em contato em breve.");
+            e.preventDefault();
+            this.reset();
+        });
+
+        // Smooth Scrolling (original)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Atualizar ano do copyright
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Prevenir console.errors de scripts bloqueados por CSP
+        window.onerror = function(message, source, lineno, colno, error) {
+            if (message.includes('Content Security Policy')) {
+                return true; // Suprime erros de CSP no console
+            }
+        };
+    </script>
+</body>
+</html>
