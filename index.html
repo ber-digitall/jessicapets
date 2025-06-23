@@ -55,131 +55,6 @@
             align-items: center;
         }
         
-
-           /* Novo CSS para o menu hamburger */
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 10px;
-            z-index: 101;
-        }
-
-        .hamburger-box {
-            width: 30px;
-            height: 24px;
-            display: inline-block;
-            position: relative;
-        }
-
-        .hamburger-inner {
-            display: block;
-            top: 50%;
-            margin-top: -2px;
-        }
-
-        .hamburger-inner,
-        .hamburger-inner::before,
-        .hamburger-inner::after {
-            width: 30px;
-            height: 3px;
-            background-color: var(--black);
-            border-radius: 3px;
-            position: absolute;
-            transition: transform 0.3s ease;
-        }
-
-        .hamburger-inner::before,
-        .hamburger-inner::after {
-            content: "";
-            display: block;
-        }
-
-        .hamburger-inner::before {
-            top: -10px;
-        }
-
-        .hamburger-inner::after {
-            bottom: -10px;
-        }
-
-        /* Estado ativo do hamburger */
-        .hamburger.active .hamburger-inner {
-            transform: rotate(45deg);
-        }
-
-        .hamburger.active .hamburger-inner::before {
-            transform: rotate(-90deg) translate(-10px, 0);
-            opacity: 0;
-        }
-
-        .hamburger.active .hamburger-inner::after {
-            transform: rotate(90deg) translate(-10px, 0);
-            opacity: 0;
-        }
-
-        /* Menu mobile */
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 70%;
-            height: 100vh;
-            background: var(--white);
-            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-            z-index: 100;
-            padding: 80px 20px 20px;
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .mobile-menu.active {
-            transform: translateX(0);
-        }
-
-        .mobile-menu ul {
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .mobile-menu li {
-            margin: 0;
-        }
-
-        .mobile-menu a {
-            display: block;
-            padding: 1rem;
-            border-radius: 5px;
-        }
-
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 99;
-        }
-
-        .overlay.active {
-            display: block;
-        }
-
-        /* Esconder menu desktop em mobile */
-        @media (max-width: 768px) {
-            nav.desktop-menu {
-                display: none;
-            }
-
-            .hamburger {
-                display: block;
-            }
-        }
-
         .logo-container {
              height: 80px; /* Altura fixa para o container da logo */
         }
@@ -924,37 +799,16 @@
                 <img src="jessicapetstransparente.png" alt="Jéssica Pets - Logo" class="logo-img" loading="lazy">
             </a>
         </div>
-        
-        <!-- Menu desktop (original) -->
-        <nav class="desktop-menu" aria-label="Navegação principal">
+        <nav aria-label="Navegação principal">
             <ul>
                 <li><a href="#inicio">Início</a></li>
                 <li><a href="#sobre">Sobre Nós</a></li>
-                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#depoimentos">Depoimentos dos Clientes</a></li>
                 <li><a href="#produtos">Produtos</a></li>
                 <li><a href="#contato">Contate-nos</a></li>
             </ul>
         </nav>
-        
-        <!-- Botão hamburger -->
-        <button class="hamburger" aria-label="Menu" aria-expanded="false">
-            <span class="hamburger-box">
-                <span class="hamburger-inner"></span>
-            </span>
-        </button>
     </header>
-    
-    <!-- Menu mobile -->
-    <div class="overlay"></div>
-    <nav class="mobile-menu" aria-label="Navegação mobile">
-        <ul>
-            <li><a href="#inicio" class="mobile-link">Início</a></li>
-            <li><a href="#sobre" class="mobile-link">Sobre Nós</a></li>
-            <li><a href="#depoimentos" class="mobile-link">Depoimentos</a></li>
-            <li><a href="#produtos" class="mobile-link">Produtos</a></li>
-            <li><a href="#contato" class="mobile-link">Contate-nos</a></li>
-        </ul>
-    </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="inicio" aria-labelledby="hero-heading">
@@ -1461,41 +1315,6 @@
                 return true; // Suprime erros de CSP no console
             }
         };
-
-        // JavaScript para o menu hamburger
-        document.addEventListener('DOMContentLoaded', function() {
-            const hamburger = document.querySelector('.hamburger');
-            const mobileMenu = document.querySelector('.mobile-menu');
-            const overlay = document.querySelector('.overlay');
-            const mobileLinks = document.querySelectorAll('.mobile-link');
-            
-            // Alternar menu
-            hamburger.addEventListener('click', function() {
-                this.classList.toggle('active');
-                mobileMenu.classList.toggle('active');
-                overlay.classList.toggle('active');
-                this.setAttribute('aria-expanded', this.classList.contains('active'));
-            });
-            
-            // Fechar menu ao clicar em um link
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    hamburger.classList.remove('active');
-                    mobileMenu.classList.remove('active');
-                    overlay.classList.remove('active');
-                    hamburger.setAttribute('aria-expanded', 'false');
-                });
-            });
-            
-            // Fechar menu ao clicar no overlay
-            overlay.addEventListener('click', function() {
-                hamburger.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                this.classList.remove('active');
-                hamburger.setAttribute('aria-expanded', 'false');
-            });
-        });
-
     </script>
 </body>
 </html>
