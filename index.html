@@ -55,6 +55,166 @@
             align-items: center;
         }
 
+         /* Ajustes para o logo */
+        .logo-container {
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 60px; /* Altura fixa para melhor controle */
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* Menu hamburger melhorado */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 10px;
+            z-index: 101;
+        }
+
+        .hamburger-box {
+            width: 30px;
+            height: 24px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .hamburger-inner,
+        .hamburger-inner::before,
+        .hamburger-inner::after {
+            width: 30px;
+            height: 3px;
+            background-color: var(--black);
+            border-radius: 3px;
+            position: absolute;
+            transition: transform 0.3s ease;
+        }
+
+        .hamburger-inner {
+            top: 50%;
+            margin-top: -2px;
+        }
+
+        .hamburger-inner::before,
+        .hamburger-inner::after {
+            content: "";
+            display: block;
+        }
+
+        .hamburger-inner::before {
+            top: -10px;
+        }
+
+        .hamburger-inner::after {
+            bottom: -10px;
+        }
+
+        /* Estado ativo do hamburger */
+        .hamburger.active .hamburger-inner {
+            transform: rotate(45deg);
+        }
+
+        .hamburger.active .hamburger-inner::before {
+            transform: translateY(10px) rotate(-90deg);
+            opacity: 0;
+        }
+
+        .hamburger.active .hamburger-inner::after {
+            transform: translateY(-10px) rotate(90deg);
+            opacity: 0;
+        }
+
+        /* Menu mobile */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 280px;
+            height: 100vh;
+            background: var(--white);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 100;
+            padding: 80px 20px 20px;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .mobile-menu ul {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            list-style: none;
+        }
+
+        .mobile-menu li {
+            margin: 0;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 12px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            background: var(--lilac);
+            color: white;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 99;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* Header ajustado */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Esconder menu desktop em mobile */
+        @media (max-width: 768px) {
+            nav.desktop-menu {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
 
                 /* Novo CSS para o menu hamburger */
         .hamburger {
@@ -956,6 +1116,11 @@
         </ul>
     </nav>
 
+    <!-- Conteúdo principal (mantido do original) -->
+    <main id="main-content">
+        <!-- Seções existentes... -->
+    </main>
+
     <!-- Hero Section -->
     <section class="hero" id="inicio" aria-labelledby="hero-heading">
         <div class="hero-content">
@@ -1492,6 +1657,60 @@
                 hamburger.classList.remove('active');
                 mobileMenu.classList.remove('active');
                 this.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+         // JavaScript melhorado para o menu hamburger
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const overlay = document.querySelector('.overlay');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            
+            // Alternar menu
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                overlay.classList.toggle('active');
+                document.body.style.overflow = this.classList.contains('active') ? 'hidden' : '';
+                this.setAttribute('aria-expanded', this.classList.contains('active'));
+            });
+            
+            // Fechar menu ao clicar em um link
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Impede o comportamento padrão para podermos animar
+                    e.preventDefault();
+                    
+                    // Fecha o menu
+                    hamburger.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                    hamburger.setAttribute('aria-expanded', 'false');
+                    
+                    // Obtém o destino do link
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    // Rola suavemente para a seção
+                    if (targetElement) {
+                        setTimeout(() => {
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        }, 300); // Tempo para o menu fechar antes de rolar
+                    }
+                });
+            });
+            
+            // Fechar menu ao clicar no overlay
+            overlay.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                this.classList.remove('active');
+                document.body.style.overflow = '';
                 hamburger.setAttribute('aria-expanded', 'false');
             });
         });
