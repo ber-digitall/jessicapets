@@ -341,6 +341,31 @@
             }
         }
         
+        
+        .logo-container {
+    height: 60px;  /* Reduzido de 80px */
+    width: 150px;  /* Reduzido de 200px */
+}
+
+.logo-img {
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* Ajuste para mobile */
+@media (max-width: 768px) {
+    .logo-container {
+        height: 50px;
+        width: 130px;
+    }
+    
+    header {
+        padding: 0.8rem 1rem; /* Reduzir padding no mobile */
+    }
+}
+        
         .logo-container {
              height: 80px; /* Altura fixa para o container da logo */
         }
@@ -1080,11 +1105,11 @@
 
     <!-- Header -->
     <header>
-        <div class="logo-container">
-            <a href="#" class="logo">
-                <img src="jessicapetstransparente.png" alt="Jéssica Pets - Logo" class="logo-img" loading="lazy">
-            </a>
-        </div>
+       <div class="logo-container">
+        <a href="#" class="logo">
+            <img src="jessicapetstransparente.png" alt="Jéssica Pets" class="logo-img" loading="lazy" width="150" height="60">
+        </a>
+    </div>
         
         <!-- Menu desktop (original) -->
         <nav class="desktop-menu" aria-label="Navegação principal">
