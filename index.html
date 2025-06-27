@@ -784,6 +784,41 @@
                 right: 1.5rem;
             }
 
+            /* Estilo do botão Peça pelo WhatsApp */
+.whatsapp-order-btn {
+    background-color: #25D366 !important;
+    color: white !important;
+    transition: var(--transition);
+}
+
+.whatsapp-order-btn:hover {
+    background-color: #128C7E !important;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(18, 140, 126, 0.3);
+}
+
+/* Estilo do Instagram */
+.social-link.instagram {
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle at 30% 107%, 
+                             #fdf497 0%, 
+                             #fdf497 5%, 
+                             #fd5949 45%,
+                             #d6249f 60%,
+                             #285AEB 90%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white !important;
+    font-size: 1.2rem;
+    transition: var(--transition);
+}
+
+.social-link.instagram:hover {
+    transform: scale(1.1);
+}
+
             .back-to-top {
                 width: 40px;
                 height: 40px;
@@ -1140,10 +1175,22 @@
                             <h3>Horário de Funcionamento</h3>
                             <p>Segunda a Sexta: 9h às 20h<br>Sábado: 9h às 17h</p> <p>Domingo: 9h às 13h</p>
                         </div>
+                        <!-- Botão Peça pelo WhatsApp -->
+                <div class="contact-item" style="text-align: center; margin: 2rem 0;">
+                    <a href="https://wa.me/5511986386054" class="btn whatsapp-order-btn" style="background-color: #25D366; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: 600;">
+                        <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> Peça pelo WhatsApp
+                    </a>
+                </div>
+                
+                <!-- Link do Instagram -->
+                <div class="social-links" style="display: flex; justify-content: center; margin-top: 1rem;">
+                    <a href="https://www.instagram.com/petshop_jessicapets?igsh=MTF2OXlwMGkxeTd4bg==" class="social-link instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
                     </div>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/petshop_jessicapets?igsh=MTF2OXlwMGkxeTd4bg==" class="social-link"><i class="fab fa-instagram"></i></a>
-                    </div>
+                    
                 </div>
                 <form class="contact-form">
                     <div class="form-group">
