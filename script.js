@@ -137,3 +137,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Mostrar/ocultar botão "voltar ao topo"
+window.addEventListener('scroll', function() {
+  const backToTopBtn = document.querySelector('.back-to-top');
+  if (window.scrollY > 300) {
+    backToTopBtn.classList.add('active');
+  } else {
+    backToTopBtn.classList.remove('active');
+  }
+});
