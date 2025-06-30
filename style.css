@@ -839,7 +839,7 @@ footer {
 /* ========= ANIMAÇÃO DE PULSAÇÃO ========= */
 /* Você pode ajustar estes valores */
 :root {
-  --pulse-scale: 2.0;        /* Tamanho do pulso (1.1 = 10% maior) */
+  --pulse-scale: 1.0;        /* Tamanho do pulso (1.1 = 10% maior) */
   --pulse-duration: 2s;      /* Duração de cada pulso */
   --pulse-delay: 1s;         /* Tempo para começar */
   --pulse-repeat: infinite;  /* Número de repetições (ou 'infinite') */
