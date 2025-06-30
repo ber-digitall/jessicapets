@@ -781,30 +781,6 @@ footer {
   }
 }
 
-/* Ajustes para mobile */
-@media screen and (max-width: 768px) {
-    .whatsapp-btn,
-    .instagram-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-        bottom: 1.5rem;
-        right: 1.5rem;
-    }
-
-    .instagram-btn {
-        bottom: 6rem;
-    }
-
-    .back-to-top {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-        bottom: 10.5rem;
-        right: 1.5rem;
-    }
-}
-
 .back-to-top.active {
     opacity: 1;
     visibility: visible;
