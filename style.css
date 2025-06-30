@@ -655,15 +655,10 @@ footer {
     transition: var(--transition);
 }
 
-.whatsapp-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
-}
-
-/* Instagram Button */
+/* Instagram Button - posicionado acima do WhatsApp */
 .instagram-btn {
     position: fixed;
-    bottom: 7rem;
+    bottom: 7rem;  /* 5rem acima do WhatsApp */
     right: 2rem;
     width: 60px;
     height: 60px;
@@ -679,15 +674,10 @@ footer {
     transition: var(--transition);
 }
 
-.instagram-btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
-}
-
-/* Back to Top Button */
+/* Back to Top Button - posicionado acima do Instagram */
 .back-to-top {
     position: fixed;
-    bottom: 6rem;
+    bottom: 12rem;  /* 5rem acima do Instagram */
     right: 2rem;
     width: 50px;
     height: 50px;
@@ -703,6 +693,30 @@ footer {
     opacity: 0;
     visibility: hidden;
     transition: var(--transition);
+}
+
+/* Ajustes para mobile */
+@media screen and (max-width: 768px) {
+    .whatsapp-btn,
+    .instagram-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+
+    .instagram-btn {
+        bottom: 6rem;
+    }
+
+    .back-to-top {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+        bottom: 10.5rem;
+        right: 1.5rem;
+    }
 }
 
 .back-to-top.active {
