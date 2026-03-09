@@ -757,33 +757,39 @@ footer {
 /* VERSÃO MOBILE */
 @media screen and (max-width: 768px) {
   .whatsapp-btn, 
-  .instagram-btn {
+  .instagram-btn,
+  .back-to-top {
     width: 50px;
     height: 50px;
     font-size: 1.5rem;
     right: 1.5rem;
   }
   
-  .whatsapp-btn {
-    bottom: 1.5rem;
+  .back-to-top {
+    bottom: 1.5rem; /* Primeiro botão (mais abaixo) */
+    background-color: var(--primary-color);
+    color: var(--white);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
   }
   
   .instagram-btn {
-    bottom: 6rem; /* 4.5rem acima do WhatsApp */
+    bottom: 6rem; /* Segundo botão (acima do voltar ao topo) */
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    color: var(--white);
   }
   
-  .back-to-top {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
-    right: 1.5rem;
-    bottom: 10.5rem; /* 4.5rem acima do Instagram */
+  .whatsapp-btn {
+    bottom: 10.5rem; /* Terceiro botão (mais acima) */
+    background-color: #25D366;
+    color: var(--white);
   }
-}
-
-.back-to-top.active {
+  
+  .back-to-top.active {
     opacity: 1;
     visibility: visible;
+  }
 }
 
 .back-to-top:hover {
@@ -896,6 +902,54 @@ footer {
     .hero-content p {
         font-size: 1rem;
     }
+}
+
+/* BOTÕES FLUTUANTES - MOBILE */
+@media screen and (max-width: 768px) {
+  .whatsapp-btn, 
+  .instagram-btn, 
+  .back-to-top {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    right: 1.5rem;
+    position: fixed;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    transition: var(--transition);
+    box-shadow: var(--box-shadow);
+  }
+  
+  /* WhatsApp - botão superior */
+  .whatsapp-btn {
+    bottom: 4rem;
+    background-color: #25D366;
+    color: var(--white);
+  }
+  
+  /* Instagram - botão do meio */
+  .instagram-btn {
+    bottom: 1rem;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    color: var(--white);
+  }
+  
+  /* Voltar ao topo - botão inferior */
+  .back-to-top {
+    bottom: 7rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .back-to-top.active {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 /* ========= ANIMAÇÃO DE PULSAÇÃO ========= */
