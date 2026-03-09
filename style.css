@@ -925,21 +925,21 @@ footer {
   
   /* WhatsApp - botão superior */
   .whatsapp-btn {
-    bottom: 1rem;
+    bottom: 1.5rem;
     background-color: #25D366;
     color: var(--white);
   }
   
   /* Instagram - botão do meio */
   .instagram-btn {
-    bottom: 4rem;
+    bottom: 4.5rem;
     background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
     color: var(--white);
   }
   
   /* Voltar ao topo - botão inferior */
   .back-to-top {
-    bottom: 7rem;
+    bottom: 7.5rem;
     background-color: var(--primary-color);
     color: var(--white);
     opacity: 0;
