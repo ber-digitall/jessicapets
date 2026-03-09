@@ -87,28 +87,50 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Form Submission
+        // Form Submission - Envio para WhatsApp
     const contactForm = document.getElementById('contactForm');
-    
+    const phoneNumber = '5511986386054'; // Mesmo número do botão flutuante
+
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Form validation
+            // Coletar valores do formulário
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
             const subject = document.getElementById('subject').value.trim();
             const message = document.getElementById('message').value.trim();
             
+            // Validar campos obrigatórios
             if (!name || !email || !subject || !message) {
                 alert('Por favor, preencha todos os campos obrigatórios.');
                 return;
             }
             
-            // Here you would typically send the form data to a server
-            // For this example, we'll just show an alert
-            alert('Obrigado por sua mensagem! Entraremos em contato em breve.');
-            this.reset();
+            // Construir mensagem para o WhatsApp
+            let whatsappMessage = `*Agradecemos por você ter nos deixado uma mensagem. Logo iremos retornar este contato. Atenciosamente, Jessica Pets.*%0A%0A`;
+            whatsappMessage += `*Nome:* ${name}%0A`;
+            whatsappMessage += `*E-mail:* ${email}%0A`;
+            
+            if (phone) {
+                whatsappMessage += `*Telefone:* ${phone}%0A`;
+            }
+            
+            whatsappMessage += `*Assunto:* ${subject}%0A%0A`;
+            whatsappMessage += `*Mensagem:*%0A${message}`;
+            
+            // Criar URL do WhatsApp
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
+            
+            // Abrir WhatsApp em nova aba
+            window.open(whatsappUrl, '_blank');
+            
+            // Opcional: Limpar formulário após envio
+            // this.reset();
+            
+            // Opcional: Mostrar mensagem de sucesso
+            // alert('Redirecionando para o WhatsApp...');
         });
     }
 
