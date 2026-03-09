@@ -925,14 +925,14 @@ footer {
   
   /* WhatsApp - botão superior */
   .whatsapp-btn {
-    bottom: 4rem;
+    bottom: 1rem;
     background-color: #25D366;
     color: var(--white);
   }
   
   /* Instagram - botão do meio */
   .instagram-btn {
-    bottom: 1rem;
+    bottom: 4rem;
     background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
     color: var(--white);
   }
