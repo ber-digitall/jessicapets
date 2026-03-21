@@ -131,11 +131,6 @@ header {
     align-items: center;
 }
 
-.logo i {
-    margin-right: 0.5rem;
-    font-size: 2rem;
-}
-
 .nav-menu {
     display: flex;
 }
@@ -377,24 +372,6 @@ header {
     color: var(--dark-color);
 }
 
-.product-price {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
-.product-price span {
-    font-size: 0.9rem;
-    color: var(--gray-medium);
-    text-decoration: line-through;
-    margin-left: 0.5rem;
-}
-
-.product-btn {
-    width: 100%;
-}
-
 /* Contact Section */
 #contato {
     background-color: var(--light-color);
@@ -429,7 +406,6 @@ header {
     color: var(--dark-color);
 }
 
-/* WhatsApp Order Button */
 .whatsapp-order-btn {
     display: inline-flex;
     align-items: center;
@@ -449,29 +425,6 @@ header {
     background-color: #128C7E;
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(18, 140, 126, 0.3);
-}
-
-.social-links {
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
-}
-
-.social-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: var(--primary-color);
-    color: var(--white);
-    border-radius: 50%;
-    transition: var(--transition);
-}
-
-.social-link:hover {
-    background-color: var(--dark-color);
-    transform: translateY(-3px);
 }
 
 .contact-form .form-group {
@@ -498,7 +451,7 @@ header {
 .contact-form textarea:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 2px rgba(75, 139, 59, 0.2);
+    box-shadow: 0 0 0 2px rgba(185, 71, 84, 0.2);
 }
 
 .contact-form textarea {
@@ -636,9 +589,16 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* ============================================
-   BOTÕES FLUTUANTES - MESMO TAMANHO E ALINHADOS
-   ============================================ */
+.footer-bottom a {
+    color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.footer-bottom a:hover {
+    opacity: 0.8;
+}
+
+/* Floating Buttons */
 .floating-btn {
     position: fixed;
     right: 2rem;
@@ -655,7 +615,6 @@ footer {
     color: var(--white);
 }
 
-/* Posicionamento vertical com espaçamento uniforme */
 .whatsapp-btn {
     bottom: 2rem;
     background-color: #25D366;
@@ -663,51 +622,37 @@ footer {
 
 .instagram-btn {
     bottom: calc(2rem + 65px + 15px);
-    /* 2rem + altura do botão + 15px de espaçamento */
     background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
 }
 
 .back-to-top {
     bottom: calc(2rem + (65px * 2) + (15px * 2));
-    /* 2rem + (2 alturas) + (2 espaçamentos) */
     background-color: var(--primary-color);
     opacity: 0;
     visibility: hidden;
 }
 
-/* Estado visível do botão voltar ao topo */
 .back-to-top.active {
     opacity: 1;
     visibility: visible;
 }
 
-/* Efeitos hover */
 .floating-btn:hover {
     transform: translateY(-3px);
     filter: brightness(1.05);
 }
 
-/* Efeito de clique */
 .floating-btn:active {
     transform: scale(0.95);
 }
 
-/* Animação de pulsação */
 @keyframes pulse-animation {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.1);
-    }
-
-    100% {
-        transform: scale(1);
-    }
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
 
-.whatsapp-btn,
+.whatsapp-btn, 
 .instagram-btn {
     animation: pulse-animation 2s ease-in-out 1s infinite;
 }
@@ -719,7 +664,6 @@ footer {
 
 /* Responsive Styles */
 @media screen and (max-width: 992px) {
-
     .about-container,
     .history-container,
     .contact-container {
@@ -784,7 +728,6 @@ footer {
         gap: 0.5rem;
     }
 
-    /* Ajuste dos botões flutuantes para mobile */
     .floating-btn {
         width: 50px;
         height: 50px;
