@@ -636,168 +636,90 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* WhatsApp Button */
-.whatsapp-btn {
+/* ============================================
+   BOTÕES FLUTUANTES - MESMO TAMANHO E ALINHADOS
+   ============================================ */
+.floating-btn {
     position: fixed;
-    bottom: 2rem;
     right: 2rem;
-    width: 60px;
-    height: 60px;
-    background-color: #25D366;
-    color: var(--white);
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
-    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
     z-index: 999;
     transition: var(--transition);
-}
-
-/* Instagram Button - posicionado acima do WhatsApp */
-.instagram-btn {
-    position: fixed;
-    bottom: 7rem;  /* 5rem acima do WhatsApp */
-    right: 2rem;
-    width: 60px;
-    height: 60px;
-    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-    color: var(--white);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    z-index: 999;
-    transition: var(--transition);
-}
-
-/* Back to Top Button - posicionado acima do Instagram */
-.back-to-top {
-    position: fixed;
-    bottom: 12rem;  /* 5rem acima do Instagram */
-    right: 2rem;
-    width: 50px;
-    height: 50px;
-    background-color: var(--primary-color);
-    color: var(--white);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
     box-shadow: var(--box-shadow);
-    z-index: 999;
-    opacity: 0;
-    visibility: hidden;
-    transition: var(--transition);
+    font-size: 1.8rem;
+    color: var(--white);
 }
 
-/* BOTÕES FLUTUANTES - CONFIGURAÇÕES GERAIS */
-.whatsapp-btn, 
-.instagram-btn, 
-.back-to-top {
-  position: fixed;
-  right: 2rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
-  transition: var(--transition);
-  box-shadow: var(--box-shadow);
-}
-
-/* BOTÃO WHATSAPP */
+/* Posicionamento vertical com espaçamento uniforme */
 .whatsapp-btn {
-  bottom: 2rem;
-  width: 60px;
-  height: 60px;
-  background-color: #25D366;
-  color: var(--white);
-  font-size: 2rem;
+    bottom: 2rem;
+    background-color: #25D366;
 }
 
-/* BOTÃO INSTAGRAM */
 .instagram-btn {
-  bottom: 7rem;
-  width: 60px;
-  height: 60px;
-  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-  color: var(--white);
-  font-size: 2rem;
+    bottom: calc(2rem + 65px + 15px);
+    /* 2rem + altura do botão + 15px de espaçamento */
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
 }
 
-/* BOTÃO VOLTAR AO TOPO */
 .back-to-top {
-  bottom: 12rem;
-  width: 50px;
-  height: 50px;
-  background-color: var(--primary-color);
-  color: var(--white);
-  font-size: 1.5rem;
-  opacity: 0;
-  visibility: hidden;
-}
-
-/* ESTADOS DOS BOTÕES */
-.back-to-top.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.whatsapp-btn:hover, 
-.instagram-btn:hover, 
-.back-to-top:hover {
-  transform: translateY(-3px);
-}
-
-/* VERSÃO MOBILE */
-@media screen and (max-width: 768px) {
-  .whatsapp-btn, 
-  .instagram-btn,
-  .back-to-top {
-    width: 50px;
-    height: 50px;
-    font-size: 1.5rem;
-    right: 1.5rem;
-  }
-  
-  .back-to-top {
-    bottom: 1.5rem; /* Primeiro botão (mais abaixo) */
+    bottom: calc(2rem + (65px * 2) + (15px * 2));
+    /* 2rem + (2 alturas) + (2 espaçamentos) */
     background-color: var(--primary-color);
-    color: var(--white);
     opacity: 0;
     visibility: hidden;
-    transition: var(--transition);
-  }
-  
-  .instagram-btn {
-    bottom: 6rem; /* Segundo botão (acima do voltar ao topo) */
-    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-    color: var(--white);
-  }
-  
-  .whatsapp-btn {
-    bottom: 10.5rem; /* Terceiro botão (mais acima) */
-    background-color: #25D366;
-    color: var(--white);
-  }
-  
-  .back-to-top.active {
+}
+
+/* Estado visível do botão voltar ao topo */
+.back-to-top.active {
     opacity: 1;
     visibility: visible;
-  }
 }
 
-.back-to-top:hover {
-    background-color: var(--dark-color);
+/* Efeitos hover */
+.floating-btn:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.05);
+}
+
+/* Efeito de clique */
+.floating-btn:active {
+    transform: scale(0.95);
+}
+
+/* Animação de pulsação */
+@keyframes pulse-animation {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.whatsapp-btn,
+.instagram-btn {
+    animation: pulse-animation 2s ease-in-out 1s infinite;
+}
+
+.whatsapp-btn:hover,
+.instagram-btn:hover {
+    animation-play-state: paused;
 }
 
 /* Responsive Styles */
 @media screen and (max-width: 992px) {
+
     .about-container,
     .history-container,
     .contact-container {
@@ -862,26 +784,24 @@ footer {
         gap: 0.5rem;
     }
 
-    /* Adjust floating buttons for mobile */
-    .whatsapp-btn,
-    .instagram-btn {
+    /* Ajuste dos botões flutuantes para mobile */
+    .floating-btn {
         width: 50px;
         height: 50px;
         font-size: 1.5rem;
-        bottom: 1.5rem;
         right: 1.5rem;
+    }
+
+    .whatsapp-btn {
+        bottom: 1.5rem;
     }
 
     .instagram-btn {
-        bottom: 6rem;
+        bottom: calc(1.5rem + 50px + 12px);
     }
 
     .back-to-top {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-        bottom: 5rem;
-        right: 1.5rem;
+        bottom: calc(1.5rem + (50px * 2) + (12px * 2));
     }
 }
 
@@ -902,90 +822,4 @@ footer {
     .hero-content p {
         font-size: 1rem;
     }
-}
-
-/* BOTÕES FLUTUANTES - MOBILE */
-@media screen and (max-width: 768px) {
-  .whatsapp-btn, 
-  .instagram-btn, 
-  .back-to-top {
-    width: 50px;
-    height: 50px;
-    font-size: 1.5rem;
-    right: 1.5rem;
-    position: fixed;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-    transition: var(--transition);
-    box-shadow: var(--box-shadow);
-  }
-  
-  /* WhatsApp - botão superior */
-  .whatsapp-btn {
-    bottom: 1.5rem;
-    background-color: #25D366;
-    color: var(--white);
-  }
-  
-  /* Instagram - botão do meio */
-  .instagram-btn {
-    bottom: 4.5rem;
-    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-    color: var(--white);
-  }
-  
-  /* Voltar ao topo - botão inferior */
-  .back-to-top {
-    bottom: 7.5rem;
-    background-color: var(--primary-color);
-    color: var(--white);
-    opacity: 0;
-    visibility: hidden;
-  }
-  
-  .back-to-top.active {
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
-/* ========= ANIMAÇÃO DE PULSAÇÃO ========= */
-/* Você pode ajustar estes valores */
-:root {
-  --pulse-scale: 1.1;        /* Tamanho do pulso (1.1 = 10% maior) */
-  --pulse-duration: 2s;      /* Duração de cada pulso */
-  --pulse-delay: 1s;         /* Tempo para começar */
-  --pulse-repeat: infinite;  /* Número de repetições (ou 'infinite') */
-}
-
-/* Animação personalizada */
-@keyframes pulse-animation {
-  0% { transform: scale(1); }
-  50% { transform: scale(var(--pulse-scale)); }
-  100% { transform: scale(1); }
-}
-
-/* Aplicando aos botões */
-.whatsapp-btn, 
-.instagram-btn {
-  animation: pulse-animation 
-    var(--pulse-duration) 
-    ease-in-out 
-    var(--pulse-delay) 
-    var(--pulse-repeat);
-}
-
-/* Pausa ao passar o mouse */
-.whatsapp-btn:hover,
-.instagram-btn:hover {
-  animation-play-state: paused;
-}
-
-/* Efeito de clique */
-.whatsapp-btn:active,
-.instagram-btn:active {
-  transform: scale(0.95);
 }
